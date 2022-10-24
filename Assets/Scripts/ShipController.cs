@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
-    [SerializeField] float rotationSpeed, thrustPower;   
-
+    [SerializeField] float rotationSpeed, thrustPower;
+    [SerializeField] GameObject missile;
 
     // Update is called once per frame
     void Update()
     {
         RotatePlayer(rotationSpeed);
-
         transform.Translate(MoveDir() * Time.deltaTime * thrustPower, Space.World);
 
+        FireMissile();
     }
 
     private void RotatePlayer(float rotationSpeed)
@@ -31,5 +31,15 @@ public class ShipController : MonoBehaviour
         }
 
         return moveDir;
+    }
+
+    private void FireMissile()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(missile, transform.position, transform.rotation);
+        }
+
     }
 }
