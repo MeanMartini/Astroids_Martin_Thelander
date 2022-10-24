@@ -26,13 +26,12 @@ public class GameManager : MonoBehaviour
 
     public void TakeDamage()
     {
-        health -= 1;
-
-        if (health <= 0) Debug.Log("game over");
+        health -= 1;        
     }
 
     public void AddScore()
     {
         score += 10;        
     }
+    
 }

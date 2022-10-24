@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 180
-  thrustPower: 1
+  thrustPower: 0.5
   missile: {fileID: 1449907374294589878, guid: 6633ee794ebd1e846aa18393a02ca7a5, type: 3}
 --- !u!114 &2326338219429451167
 MonoBehaviour:
