@@ -90,13 +90,14 @@ public class CollisionManager : MonoBehaviour
 
     void PlayerCollision(GameObject obj)
     {
-        if (obj.CompareTag("Player")) Debug.Log("PLayer damaged"); //remove one health
+        if (obj.CompareTag("Player")) GameManager.instance.TakeDamage(); //remove one health
     }
 
     void MissileCollision(GameObject obj)
     {
         if (obj.CompareTag("Missile"))
         {
+            GameManager.instance.AddScore();
             objInScn.Remove(obj);
             Destroy(obj);
         }
