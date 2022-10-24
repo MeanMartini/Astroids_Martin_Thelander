@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8845184235134324063}
   - component: {fileID: 8845184235134324062}
   - component: {fileID: 8845184235134324065}
+  - component: {fileID: 2326338219429451167}
   m_Layer: 0
   m_Name: Ship
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,3 +101,16 @@ MonoBehaviour:
   rotationSpeed: 180
   thrustPower: 1
   missile: {fileID: 1449907374294589878, guid: 6633ee794ebd1e846aa18393a02ca7a5, type: 3}
+--- !u!114 &2326338219429451167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8845184235134324064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5c1425f40de314daeb6e65b8714bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.15
