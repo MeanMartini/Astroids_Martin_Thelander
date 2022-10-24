@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class GameManager : MonoBehaviour
 {
-    public int health = 3;
-    public int score = 0;
+    [HideInInspector] public int health = 3, score = 0;
 
     public static GameManager instance { get; private set; }
 
@@ -21,15 +22,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    
+
     public void TakeDamage()
     {
         health -= 1;
-        Debug.Log(health);
+
+        if (health <= 0) Debug.Log("game over");
     }
 
     public void AddScore()
     {
-        score += 10;
-        Debug.Log(score);
+        score += 10;        
     }
 }
