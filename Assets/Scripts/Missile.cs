@@ -8,7 +8,15 @@ public class Missile : MonoBehaviour
 
     private void Start()
     {
-        Destroy(gameObject, 3f);
+        StartCoroutine(AddnRemove());
+    }
+
+    IEnumerator AddnRemove()
+    {
+        CollisionManager.instance.objInScn.Add(gameObject);
+        yield return new WaitForSeconds(3);
+        CollisionManager.instance.objInScn.Remove(gameObject);
+        Destroy(gameObject);
     }
 
     private void Update()
