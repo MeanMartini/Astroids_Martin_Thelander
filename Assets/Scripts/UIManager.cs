@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] Image[] ships;  
 
-    private void Start()
+    private void Awake()
     {
         startButton.onClick.AddListener(Play);
         Pause();
@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
     {
         scoreText.text = "Score: " + GameManager.instance.score;
         lastScoreText.text = "Last score: " + GameManager.instance.score;
-        Health(GameManager.instance.health);
+        DispHealth(GameManager.instance.health);
 
         if(GameManager.instance.health <= 0)
         {
@@ -33,11 +33,12 @@ public class UIManager : MonoBehaviour
 
     
 
-    void Health(int health)
+    void DispHealth(int health)
     {
         for (int i = 0; i < ships.Length; i++)
         {
-            if(health - 1 < i) ships[i].enabled = false;
+            if (health - 1 < i) ships[i].enabled = false;
+            else ships[i].enabled = true;
         }
     }
 
@@ -48,7 +49,9 @@ public class UIManager : MonoBehaviour
     }
 
     void Play()
-    {        
+    {
+        GameManager.instance.health = 3;
+        GameManager.instance.score = 0;
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
     }
