@@ -8,6 +8,8 @@ public class ShipController : MonoBehaviour
     public float invincibilityDuration; //Time in seconds where player can't take damage after being hit by asteroid.
 
     [SerializeField] GameObject missile;
+    [SerializeField] GameObject thrusterSprite;
+    [SerializeField] float thrustAnimDuration;
 
     // Update is called once per frame
     void Update()
@@ -30,9 +32,17 @@ public class ShipController : MonoBehaviour
         if (Input.GetKeyDown("up"))
         {
             moveDir = transform.up + moveDir;
+            StartCoroutine(ThrusterAnim());
         }
 
         return moveDir;
+    }
+
+    IEnumerator ThrusterAnim()
+    {
+        thrusterSprite.SetActive(true);
+        yield return new WaitForSeconds(thrustAnimDuration);
+        thrusterSprite.SetActive(false);
     }
 
     private void FireMissile()
