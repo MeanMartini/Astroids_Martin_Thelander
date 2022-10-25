@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class WorldWarp : MonoBehaviour
 {
-    float radius;
+    [SerializeField] float radius;
     float horizontalBounds;
     float verticalBounds;
-      
+    [SerializeField] bool manualRadius;     
 
     private void Start()
     {
-        radius = GetComponent<CircleCollider>().radius;
+        if(!manualRadius) radius = GetComponent<CircleCollider>().radius;        
+
         horizontalBounds = Camera.main.orthographicSize * Screen.width / Screen.height;
         verticalBounds = Camera.main.orthographicSize;
     }
@@ -34,5 +35,12 @@ public class WorldWarp : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, transform.position.y * -1);
         }
+    }
+
+    //Displays radius gizmo.
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

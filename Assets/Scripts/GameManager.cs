@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int health = 3, score = 0;
     private bool clearScene = true;
 
-    [SerializeField] GameObject player;
+    private GameObject player;
     public static GameManager instance { get; private set; }
 
     private void Awake()
@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+    }
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
