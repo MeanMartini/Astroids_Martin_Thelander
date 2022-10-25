@@ -8,6 +8,9 @@ public class Astroid : MonoBehaviour
 
     [SerializeField] float speed;
 
+    [SerializeField] GameObject spriteRenderer;
+    [SerializeField] float rotationSpeed = 1;
+
     private void Start()
     {
         direction = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10));
@@ -15,11 +18,16 @@ public class Astroid : MonoBehaviour
 
     private void Update()
     {
-        RandomTranslate(speed);
+        RandomTranslate();
+        RandomRotate();
     }
 
+    private void RandomRotate()
+    {
+        spriteRenderer.transform.Rotate(Vector3.forward * Random.Range(-1, 1) * Time.deltaTime * rotationSpeed);
+    }
 
-    private void RandomTranslate(float speed)
+    private void RandomTranslate()
     {
         transform.Translate(direction * speed * Time.deltaTime);
     }

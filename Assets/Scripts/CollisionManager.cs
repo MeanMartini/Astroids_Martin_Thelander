@@ -62,6 +62,7 @@ public class CollisionManager : MonoBehaviour
                         }
                     }
             }
+            else if (currentObj == null) objInScn.Remove(currentObj);
         }
     }
 
