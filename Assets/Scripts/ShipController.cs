@@ -22,7 +22,7 @@ public class ShipController : MonoBehaviour
         transform.Rotate(rotationZ * Time.deltaTime * rotationSpeed);
     }
 
-    Vector3 moveDir;
+    public Vector3 moveDir;
     private Vector3 MoveDir()
     {
         if (Input.GetKeyDown("up"))

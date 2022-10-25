@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] Button startButton;
 
-    [SerializeField] Image[] ships;  
+    [SerializeField] Image[] healthIcons;  
 
     private void Awake()
     {
@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
         lastScoreText.text = "Last score: " + GameManager.instance.score;
         DispHealth(GameManager.instance.health);
 
-        if(GameManager.instance.health <= 0)
+        if(GameManager.instance.health == 0)
         {
             Pause();
         }        
@@ -35,10 +35,10 @@ public class UIManager : MonoBehaviour
 
     void DispHealth(int health)
     {
-        for (int i = 0; i < ships.Length; i++)
+        for (int i = 0; i < healthIcons.Length; i++)
         {
-            if (health - 1 < i) ships[i].enabled = false;
-            else ships[i].enabled = true;
+            if (health - 1 < i) healthIcons[i].enabled = false;
+            else healthIcons[i].enabled = true;
         }
     }
 
@@ -50,10 +50,10 @@ public class UIManager : MonoBehaviour
 
     void Play()
     {
-        GameManager.instance.health = 3;
-        GameManager.instance.score = 0;
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
+
+        GameManager.instance.ResetScene();        
     }
 
 }

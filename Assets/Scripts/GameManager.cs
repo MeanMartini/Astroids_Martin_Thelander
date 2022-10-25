@@ -7,7 +7,9 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     [HideInInspector] public int health = 3, score = 0;
+    private bool clearScene = true;
 
+    [SerializeField] GameObject player;
     public static GameManager instance { get; private set; }
 
     private void Awake()
@@ -22,7 +24,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    private void Update()
+    {
+        if (clearScene)
+        {
+            foreach (GameObject obj in CollisionManager.instance.objInScn)
+            {
+                if (!obj.CompareTag("Player"))
+                {
+                    CollisionManager.instance.objInScn.Remove(obj);
+                    Destroy(obj);
+                }
+            }
+            clearScene = false;
+        }
+    }
+
+    public void ResetScene()
+    {       
+        health = 3;
+        score = 0;
+
+        player.transform.position = Vector3.zero;
+        player.transform.rotation = Quaternion.identity;
+        player.GetComponent<ShipController>().moveDir = Vector3.zero;
+
+        clearScene = true;
+    }
 
     public void TakeDamage()
     {
