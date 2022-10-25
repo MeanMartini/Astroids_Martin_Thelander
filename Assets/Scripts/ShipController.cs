@@ -5,6 +5,8 @@ using UnityEngine;
 public class ShipController : MonoBehaviour
 {
     [SerializeField] float rotationSpeed, thrustPower;
+    public float invincibilityDuration; //Time in seconds where player can't take damage after being hit by asteroid.
+
     [SerializeField] GameObject missile;
 
     // Update is called once per frame
@@ -22,7 +24,7 @@ public class ShipController : MonoBehaviour
         transform.Rotate(rotationZ * Time.deltaTime * rotationSpeed);
     }
 
-    public Vector3 moveDir;
+    [HideInInspector] public Vector3 moveDir;
     private Vector3 MoveDir()
     {
         if (Input.GetKeyDown("up"))

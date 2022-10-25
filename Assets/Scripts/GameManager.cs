@@ -52,9 +52,22 @@ public class GameManager : MonoBehaviour
         clearScene = true;
     }
 
+    bool invincibel = false;
     public void TakeDamage()
     {
-        health -= 1;        
+        if(invincibel == false)
+        {
+            health -= 1;
+            StartCoroutine(Invinciblity());
+        }
+    }
+
+
+    IEnumerator Invinciblity()
+    {
+        invincibel = true;
+        yield return new WaitForSeconds(player.GetComponent<ShipController>().invincibilityDuration);
+        invincibel = false;
     }
 
     public void AddScore()
