@@ -1449,6 +1449,7 @@ MonoBehaviour:
   lastScoreText: {fileID: 280098698}
   pauseMenu: {fileID: 900207229}
   startButton: {fileID: 103559215}
+  paused: 0
   healthIcons:
   - {fileID: 1929655667}
   - {fileID: 1046984974}
@@ -1464,7 +1465,7 @@ GameObject:
   - component: {fileID: 1303069714}
   - component: {fileID: 1303069713}
   m_Layer: 0
-  m_Name: Laser sound
+  m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1870,7 +1871,7 @@ GameObject:
   - component: {fileID: 1632311867}
   - component: {fileID: 1632311866}
   m_Layer: 0
-  m_Name: Boom sound
+  m_Name: Boom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2272,7 +2273,7 @@ GameObject:
   - component: {fileID: 2022887479}
   - component: {fileID: 2022887478}
   m_Layer: 0
-  m_Name: Thruster sound
+  m_Name: Thruster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2451,6 +2452,10 @@ PrefabInstance:
     - target: {fileID: 8845184235134324064, guid: d8c8826480611e34c96d828ab3ffe9c1, type: 3}
       propertyPath: m_Name
       value: Ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 8845184235134324064, guid: d8c8826480611e34c96d828ab3ffe9c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8c8826480611e34c96d828ab3ffe9c1, type: 3}

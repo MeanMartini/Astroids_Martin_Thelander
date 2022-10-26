@@ -25,7 +25,7 @@ public class CollisionManager : MonoBehaviour
 
     private void Update()
     {
-        DetectCollision();
+        if(!UIManager.instance.paused) DetectCollision();
     }
 
     private void DetectCollision()

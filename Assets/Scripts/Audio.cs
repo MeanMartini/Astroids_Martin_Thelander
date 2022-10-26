@@ -10,8 +10,11 @@ public class Audio : MonoBehaviour
 
     private void Update()
     {
-        PlayLaser();
-        PlayThruster();
+        if (!UIManager.instance.paused)
+        {
+            PlayLaser();
+            PlayThruster();
+        }            
     }
 
     public void PlayLaser()

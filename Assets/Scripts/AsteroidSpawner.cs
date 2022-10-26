@@ -19,7 +19,7 @@ public class AsteroidSpawner : MonoBehaviour
         StartCoroutine(Spawn());
         horizontalBounds = Camera.main.orthographicSize * Screen.width / Screen.height;
         verticalBounds = Camera.main.orthographicSize;
-    }
+    }  
 
     IEnumerator Spawn()
     {

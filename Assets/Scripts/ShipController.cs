@@ -15,9 +15,12 @@ public class ShipController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RotatePlayer(rotationSpeed);
-        transform.Translate(MoveDir() * Time.deltaTime * thrustPower, Space.World);
-        FireMissile();
+        if (!UIManager.instance.paused)
+        {
+            RotatePlayer(rotationSpeed);
+            transform.Translate(MoveDir() * Time.deltaTime * thrustPower, Space.World);
+            FireMissile();
+        }
     }
 
     private void RotatePlayer(float rotationSpeed)

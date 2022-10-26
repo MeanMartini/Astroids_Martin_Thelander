@@ -10,11 +10,23 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI lastScoreText;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] Button startButton;
+    public bool paused;
 
     [SerializeField] Image[] healthIcons;  
 
+    public static UIManager instance { get; private set; }      
+
     private void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+
         startButton.onClick.AddListener(Play);
         Pause();
     }
@@ -46,12 +58,14 @@ public class UIManager : MonoBehaviour
     {        
         Time.timeScale = 0;
         pauseMenu.SetActive(true);
+        paused = true;
     }
 
     void Play()
     {
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
+        paused = false;
 
         GameManager.instance.ResetScene();        
     }
