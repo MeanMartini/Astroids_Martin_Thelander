@@ -63,12 +63,10 @@ public class CollisionManager : MonoBehaviour
 
             case CircleCollider.ColliderType.Missile:
                 MissileCollision(obj, other);
-                audio.PlayBoom();
                 break;
 
             case CircleCollider.ColliderType.Player:
                 PlayerCollision(obj, other);
-                audio.PlayBoom();
                 break;
         }
     }
