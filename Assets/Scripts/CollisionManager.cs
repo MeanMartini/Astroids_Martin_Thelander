@@ -43,28 +43,33 @@ public class CollisionManager : MonoBehaviour
                         if (thisCollider.radius + otherCollider.radius >= DistanceTo(currentObj, other))
                         {
                             //Collision detected!
-                            AstroidCollision(other);
-                            AstroidCollision(currentObj);                            
-
-                            if (!other.CompareTag("Missile") && !currentObj.CompareTag("Missile"))
-                            {
-                                audio.PlayBoom();
-                                PlayerCollision(other);
-                                PlayerCollision(currentObj);                                
-                            }
-
-                            if (!other.CompareTag("Player") && !currentObj.CompareTag("Player"))
-                            {
-                                audio.PlayBoom();
-                                MissileCollision(other);
-                                MissileCollision(currentObj);                                
-                            }
-
-
+                            CollisionSwitch(thisCollider, currentObj, other);
+                            CollisionSwitch(otherCollider, other, currentObj);
                         }
                     }
             }
             else if (currentObj == null) objInScn.Remove(currentObj);
+        }
+    }
+
+    void CollisionSwitch(CircleCollider collider, GameObject obj, GameObject other)
+    {
+        switch (collider.colliderType)
+        {
+            case CircleCollider.ColliderType.Asteroid:
+                AstroidCollision(obj);
+                audio.PlayBoom();
+                break;
+
+            case CircleCollider.ColliderType.Missile:
+                MissileCollision(obj, other);
+                audio.PlayBoom();
+                break;
+
+            case CircleCollider.ColliderType.Player:
+                PlayerCollision(obj, other);
+                audio.PlayBoom();
+                break;
         }
     }
 
@@ -91,19 +96,19 @@ public class CollisionManager : MonoBehaviour
         }
     }
 
-    void PlayerCollision(GameObject obj)
+    void PlayerCollision(GameObject obj, GameObject other)
     {
-        if (obj.CompareTag("Player")) GameManager.instance.TakeDamage(); //remove one health
+        if(!other.CompareTag("Missile")) GameManager.instance.TakeDamage(); //remove one health
     }
 
-    void MissileCollision(GameObject obj)
+    void MissileCollision(GameObject obj, GameObject other)
     {
-        if (obj.CompareTag("Missile"))
+        if (!other.CompareTag("Player"))
         {
             GameManager.instance.AddScore();
             objInScn.Remove(obj);
             Destroy(obj);
-        }
+        }               
     }   
 
     //Uses pythagorean theorem to calc distance to center.

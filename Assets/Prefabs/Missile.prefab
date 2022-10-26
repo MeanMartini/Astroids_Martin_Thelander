@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43d44297e125ea445bd11be62a289354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missileSpeed: 5
+  missileSpeed: 10
 --- !u!114 &8507038918155847668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,3 +112,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 0.04
+  colliderType: 2

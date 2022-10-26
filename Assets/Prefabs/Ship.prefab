@@ -191,8 +191,6 @@ MonoBehaviour:
   missile: {fileID: 1449907374294589878, guid: 6633ee794ebd1e846aa18393a02ca7a5, type: 3}
   thrusterSprite: {fileID: 2075842053434149198}
   thrustAnimDuration: 0.2
-  laserSound: {fileID: 8300000, guid: b00d95099b0d6444eaa6ef45a3f709e3, type: 3}
-  thrusterSound: {fileID: 8300000, guid: 144016b279e112b45a3a8253ed996a9b, type: 3}
   moveDir: {x: 0, y: 0, z: 0}
 --- !u!114 &2326338219429451167
 MonoBehaviour:
@@ -207,6 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 0.15
+  colliderType: 1
 --- !u!114 &9114961111032035116
 MonoBehaviour:
   m_ObjectHideFlags: 0
