@@ -9,14 +9,14 @@ public class ShipController : MonoBehaviour
 
     [SerializeField] GameObject missile;
     [SerializeField] GameObject thrusterSprite;
-    [SerializeField] float thrustAnimDuration;
+    [SerializeField] float thrustAnimDuration;   
+
 
     // Update is called once per frame
     void Update()
     {
         RotatePlayer(rotationSpeed);
         transform.Translate(MoveDir() * Time.deltaTime * thrustPower, Space.World);
-
         FireMissile();
     }
 
@@ -25,7 +25,6 @@ public class ShipController : MonoBehaviour
         Vector3 rotationZ = new Vector3(0f, 0f, Input.GetAxis("Horizontal") * -1f);
         transform.Rotate(rotationZ * Time.deltaTime * rotationSpeed);
     }
-
     [HideInInspector] public Vector3 moveDir;
     private Vector3 MoveDir()
     {

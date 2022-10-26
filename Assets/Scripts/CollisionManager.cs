@@ -6,10 +6,10 @@ public class CollisionManager : MonoBehaviour
 {
     public List<GameObject> objInScn = new List<GameObject>();
     [SerializeField] GameObject smallAstroid;
-    [SerializeField] GameObject mediumAstroid;
+    [SerializeField] GameObject mediumAstroid;   
+    [SerializeField] private Audio audio;
 
-
-    public static CollisionManager instance { get; private set; }
+    public static CollisionManager instance { get; private set; }  
 
     private void Awake()
     {
@@ -44,18 +44,20 @@ public class CollisionManager : MonoBehaviour
                         {
                             //Collision detected!
                             AstroidCollision(other);
-                            AstroidCollision(currentObj);
+                            AstroidCollision(currentObj);                            
 
                             if (!other.CompareTag("Missile") && !currentObj.CompareTag("Missile"))
                             {
+                                audio.PlayBoom();
                                 PlayerCollision(other);
-                                PlayerCollision(currentObj);
+                                PlayerCollision(currentObj);                                
                             }
 
                             if (!other.CompareTag("Player") && !currentObj.CompareTag("Player"))
                             {
+                                audio.PlayBoom();
                                 MissileCollision(other);
-                                MissileCollision(currentObj);
+                                MissileCollision(currentObj);                                
                             }
 
 
@@ -102,7 +104,7 @@ public class CollisionManager : MonoBehaviour
             objInScn.Remove(obj);
             Destroy(obj);
         }
-    }
+    }   
 
     //Uses pythagorean theorem to calc distance to center.
     private float DistanceTo(GameObject a, GameObject b)
