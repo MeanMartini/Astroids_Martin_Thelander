@@ -1612,7 +1612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnInterval: 3
-  astroids:
+  asteroids:
   - {fileID: 7960699693994660609, guid: 220a5281468b59946937aac3933f62ac, type: 3}
   - {fileID: 9025783243729210298, guid: 6d719218bf7020647b49bb79028f73f2, type: 3}
   - {fileID: 5842270200582557438, guid: 7e37a5c546c98db46b436182955c832e, type: 3}

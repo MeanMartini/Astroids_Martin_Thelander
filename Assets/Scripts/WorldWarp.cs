@@ -13,6 +13,7 @@ public class WorldWarp : MonoBehaviour
     {
         if(!manualRadius) radius = GetComponent<CircleCollider>().radius;        
 
+        //Finds bounds by calculating aspect ratio multiplied by camera size.
         horizontalBounds = Camera.main.orthographicSize * Screen.width / Screen.height;
         verticalBounds = Camera.main.orthographicSize;
     }
@@ -22,7 +23,8 @@ public class WorldWarp : MonoBehaviour
         WorldWrap();        
     }
 
-    //Moves object to opposite side of screen when it goes outside bounds.
+    //Moves object to opposite side of screen when it goes outside bounds. 
+    //Moves objects by inverting their position.
     void WorldWrap()
     {
         //Horizontal bounds

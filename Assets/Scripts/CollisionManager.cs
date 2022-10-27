@@ -28,6 +28,8 @@ public class CollisionManager : MonoBehaviour
         if(!UIManager.instance.paused) DetectCollision();
     }
 
+    //Loops through list of objects in scene and checks distance to eachother.
+    //If distance is closer than objA radius + objB radius collision has occured.
     private void DetectCollision()
     {
         foreach (GameObject currentObj in objInScn)
@@ -52,6 +54,7 @@ public class CollisionManager : MonoBehaviour
         }
     }
 
+    //Handels what should happen to object that has collided based on ColliderTyp
     void CollisionSwitch(CircleCollider collider, GameObject obj, GameObject other)
     {
         switch (collider.colliderType)
@@ -109,7 +112,7 @@ public class CollisionManager : MonoBehaviour
         }               
     }   
 
-    //Uses pythagorean theorem to calc distance to center.
+    //Uses pythagorean theorem to calc distance to center of object a and object b.
     private float DistanceTo(GameObject a, GameObject b)
     {
         float side1 = Mathf.Abs(a.transform.position.x - b.transform.position.x);
